@@ -1,7 +1,6 @@
-FROM apache
-RUN apt-get update
-RUN apt-get install -y apache2
+FROM centos:latest
+MAINTAINER gosia
+RUN yum -y install httpd
+COPY index.html /var/www/html/
+CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
 EXPOSE 80
-VOLUME /var/www/htm;/
-COPY ./index.html /var/www/html/
-CMD ["/user/sbin/apache2ctl","-D", "FOREGROUND"]
